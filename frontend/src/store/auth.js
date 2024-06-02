@@ -1,9 +1,10 @@
 import {create} from 'zustand'
-import {mountStoreDevtool} from 'simple-zustand-devtool'
+import { mountStoreDevtool } from 'simple-zustand-devtools';
+
 
 const useAuthStore = create((set, get)=> ({
     allUserData: null,
-    loading: false
+    loading: false,
 
     user: () => ({ /* created a function called user, returning user-related information*/
     user_id: get().allUserData?.user_id || null,
@@ -12,7 +13,7 @@ const useAuthStore = create((set, get)=> ({
 
     setUser:(user) => set({allUserData: user}),
     setLoading: (loading) => set({loading}),
-    setLoggedIn: () => get().allUserData !== null,
+    isLoggedIn: () => get().allUserData !== null,
 }))
 
 

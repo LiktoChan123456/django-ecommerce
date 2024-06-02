@@ -18,7 +18,6 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
             token['vendor_id'] = user.vendor.id
         except:
             token['vendor_id'] = 0
-        
         return token
     
 class RegisterSerializer(serializers.ModelSerializer):
