@@ -8,4 +8,6 @@ urlpatterns = [
     path('user/token/', userauth_views.MyTokenObtainPairView.as_view()),
     path('user/token/refresh/', TokenRefreshView.as_view()),
     path('user/register/', userauth_views.RegisterView.as_view()),  #its a classbased view
+    path('user/password-reset/<email>', userauth_views.PasswordResetEmailVerify.as_view(), name='password-reset'),
+    path('user/password-change/', userauth_views.PasswordChangeView.as_view(), name='password_change'),
 ]

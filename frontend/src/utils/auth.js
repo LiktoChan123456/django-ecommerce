@@ -37,17 +37,30 @@ export const register = async (full_name, email, phone, password, password2) => 
         //Alert- Signup successfully
         return {data, error: null}
     } catch (error) {
-        return{
-            data: null,
-            error: error.response.data?.detail || "Something went wrong"
+        const errorDetail = error.response?.data || {};
+        let errorMessages = [];
+
+        if (errorDetail.detail) {
+            errorMessages.push(errorDetail.detail);
         }
+        if (errorDetail.email) {
+            errorMessages.push(`Email: ${errorDetail.email[0]}`);
+        }
+        if (errorDetail.password) {
+            errorMessages.push(`Password: ${errorDetail.password[0]}`);
+        }
+
+        return {
+            data: null,
+            error: errorMessages.join("<br />") || "Something went wrong"
+        };
     }
 }
 
 export const logout = () => {
     Cookies.remove("access_token")
     Cookies.remove("refresh_token")
-    useAuthStore.getState().setUser(null)
+    useAuthStore.getState().setUser(null);
 
     // Alert- Signout Successfully
 }
