@@ -1,6 +1,5 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-
+import React from "react";
+import { Link } from "react-router-dom";
 
 function StoreHeader() {
   return (
@@ -181,7 +180,7 @@ function StoreHeader() {
         </div>
       </nav>
     </div>
-  )
+  );
 }
 
-export default StoreHeader
+export default StoreHeader;

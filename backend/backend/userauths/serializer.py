@@ -65,4 +65,5 @@ class ProfileSerializer(serializers.ModelSerializer):
         response['user'] = UserSerializer(instance=user).data
         return response
 
+
     
